@@ -1,0 +1,44 @@
+{% extends "base.html" %}  <!-- Inherit from the base template -->
+{% load static %}  <!-- Load static files -->
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Ensure responsive design for different devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <title>User Profile</title>  <!-- Set the title of the page -->
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Main heading for the user profile page -->
+        <h2 class="text-center">User Profile</h2>
+
+        <div class="card mt-4">  <!-- Card component to display user information -->
+            <div class="card-body">
+                <!-- Welcome message displaying the username -->
+                <h5 class="card-title">Welcome, {{ username }}!</h5>
+                <p class="card-text">This is your profile page. You can manage your account settings and preferences here.</p>
+                
+                <!-- Logout Form -->
+                <form method="POST" action="{% url 'user_auth:logout' %}">
+                    {% csrf_token %}  <!-- CSRF token for security -->
+                    <!-- Button to log out -->
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap JS for interactive features -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}
