@@ -11,6 +11,7 @@ Docker (for containerization)
 
 Step 1: Clone the Repository
 Open your terminal or command prompt and clone the repository using git:
+
 git clone https://github.com/EmaanIsaacsWaggie/freelance_showcase.git
 
 Step 2: Navigate to the Project Directory
