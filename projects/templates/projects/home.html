@@ -1,0 +1,49 @@
+{% load static %}
+
+{% block title %}Freelance Home{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Responsive design for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Main heading of the page -->
+        <h1 class="mb-4 text-center">Welcome to the Freelance Portfolio Site</h1>
+        <div class="text-center mb-3">
+            <!-- Button to upload work -->
+            <a href="{% url 'projects:upload_work' %}" class="btn btn-primary btn-lg mx-2">Upload Your Work</a>
+            <!-- Button to view projects -->
+            <a href="{% url 'projects:projects' %}" class="btn btn-secondary btn-lg mx-2">View Projects</a>
+        </div>
+        
+        <div class="text-center mt-4">
+            {% if user.is_authenticated %}
+                <!-- Logout Form displayed if user is logged in -->
+                <form method="POST" action="{% url 'user_auth:logout' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <!-- Logout button -->
+                    <button type="submit" class="btn btn-danger btn-lg">Logout</button>
+                </form>
+            {% else %}
+                <!-- Buttons for login and registration if user is not logged in -->
+                <a href="{% url 'user_auth:login' %}" class="btn btn-success btn-lg mx-2">Login</a>
+                <a href="{% url 'user_auth:register' %}" class="btn btn-info btn-lg mx-2">Register</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap JS for interactive features -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}
